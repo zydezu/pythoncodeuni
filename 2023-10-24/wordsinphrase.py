@@ -30,6 +30,6 @@ print(dictofwords)
 for key, val  in dictofwords.items(): #this is because .items() products a tuple
     print(key, val)
 
-squared_dict = {x: x**2 for x in [1,2,3,4,4,4,4,5]}
+squared_dict = {x: x**2 for x in range(5)}
 print(squared_dict)
 
