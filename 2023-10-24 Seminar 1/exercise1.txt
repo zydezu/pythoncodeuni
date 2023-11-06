@@ -52,3 +52,4 @@ Function splitText(text:String, delimiters:String)
     splitWords.append(stringBuilder)
 
     return splitWords
+    

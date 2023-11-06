@@ -32,4 +32,3 @@ for key, val  in dictofwords.items(): #this is because .items() products a tuple
 
 squared_dict = {x: x**2 for x in range(5)}
 print(squared_dict)
-
