@@ -1,0 +1,40 @@
+- A variable declaration v = x : T introduces a variable v of type T and initialises it
+with value x.
+
+- a : Array [i..j] of T introduces an array a consisting of j−i+1 elements of
+type T stored in a[i], a[i+1], …, a[j]. At this stage of the module, a string
+is considered an array of characters and a list is an dynamic array where we can
+append value at the end of the list.
+
+- The simplest statement is an assignment x := E where x is a variable and E is an
+expression.
+
+- Flow-control structure are given below
+
+if condition then
+    statements
+else if condition then
+    statements
+else
+    statements
+endif
+
+while condition do
+    statements
+endwhile
+
+for i:= 1 to n do
+    statements
+endfor
+
+foreach e in collection do
+    statements
+endforeach
+
+Functions (returns a value) and Procedures (does not return a value) are written as follows:
+
+Function name(param1: Type1, Param2:Type2, …): returnedType
+    statements
+
+Procedure name(param1: Type1, Param2:Type2, …)
+    statements

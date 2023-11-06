@@ -1,0 +1,54 @@
+Function numpairs(input: Int, target: Int): Array
+    pairs = [] : List
+    numbers_set = () : Set
+    
+    foreach number in input do
+        complement = target - number : Int
+        if complement in num_set then
+            pairs.append((complement, num) : Set)
+        numbers_set.add(number)
+
+        return pairs
+    endforeach
+
+
+Function merge(listA: List, listB: List)
+    mergedList = [] : List
+    indexA = 0
+    indexB = 0
+
+    while indexA < length(listA) and indexB < length(listB) do
+        if listA[indexA] <= listB[indexB] then
+            mergedList.append(listA[indexA])
+            indexA++
+        else
+            mergedList.append(listB[indexB])
+            indexB++
+        endif
+
+    while indexA < length(listA):
+        mergedList.append(listA[indexA])
+        indexA++
+
+    while indexB < length(listB):
+        mergedList.append(listB[indexB])
+        indexB++
+
+    return mergedList
+
+Function splitText(text:String, delimiters:String)
+    splitWords = [] : List
+    stringBuilder = "" : String
+
+    for i:= 0 to length(text) do
+        if text[i] in delimiters then
+            splitWords.append(stringBuilder)
+            stringBuilder = ""
+        else
+            stringBuilder := stringBuilder + text[i]
+        endif
+    endfor
+
+    splitWords.append(stringBuilder)
+
+    return splitWords
