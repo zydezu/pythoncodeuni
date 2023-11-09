@@ -1,16 +1,16 @@
 def numpairs(input, target):
     pairs = []
-    numbers_set = []
+    numbers_set = {}
     
-    for number in input:
-        complement = target - number
+    for num in input:
+        complement = target - num
         if complement in numbers_set:
-            pairs.append((complement))
-        numbers_set.append(number)
+            pairs.append((complement,num))
+        #numbers_set.update(set(complement))
 
-        return pairs
+    return pairs
 
-print(numpairs([-1,1,2,4,8],7))
+print(numpairs([2,4,5,7],9))
 
 
 
@@ -26,4 +26,57 @@ def findpairs(input, target):
 
     return pairs
 
-print(findpairs([-1,1,2,4,8],7))
+print(findpairs([2,4,5,7],9))
+
+
+
+
+# thats just f  c     cccccccccccccccccccccccccccccccccccc      fwordf_^_  oough,mhghm  im so min-maxing rightnow
+
+def stupidassminmaxmethod(input, target):
+    pairs = []
+    min = 0
+    max = len(input) - 1
+
+    while max > min:
+        if input[min] + input[max] == target:
+            pairs.append((input[min], input[max]))
+            min+=1
+            max-=1
+        elif input[min] + input[max] < 0:
+            min+=1
+        else:
+            max+=1
+
+    return pairs
+
+print(stupidassminmaxmethod([2,4,5,7],9))
+
+
+
+
+def merge(listA, listB):
+    mergedList = []
+    indexA = 0
+    indexB = 0
+
+    while indexA < len(listA) and indexB < len(listB):
+        if listA[indexA] <= listB[indexB]:
+            mergedList.append(listA[indexA])
+            indexA+=1
+        else:
+            mergedList.append(listB[indexB])
+            indexB+=1
+        
+    while indexA < len(listA): #lists and not equal in length
+        mergedList.append(listA[indexA])
+        indexA+=1
+
+    while indexB < len(listB):
+        mergedList.append(listB[indexB])
+        indexB+=1
+
+    return mergedList
+
+
+print(merge([1,3,4,7],[2,3,5]))
