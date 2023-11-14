@@ -1,5 +1,16 @@
 listofnumbers = [-2, 1, -3, 4, -1, 2, 1, -5, 4]
 
+# n
+globalMax = listofnumbers[0]
+localMax = listofnumbers[0]
+for i in range(len(listofnumbers)):
+    localMax = max(listofnumbers[i], listofnumbers[i]+localMax)
+    if localMax > globalMax:
+        globalMax = localMax
+
+print(globalMax)
+
+# 1/2(n^2)
 largestsum = listofnumbers[0]
 for i in range(len(listofnumbers)):
     for j in range(i,len(listofnumbers)):
