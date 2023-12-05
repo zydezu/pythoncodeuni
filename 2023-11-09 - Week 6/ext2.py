@@ -32,13 +32,10 @@ def get_words_frequencies(text):
     for char in text:
         if (char in delimiters):
             if (stringbuilder):
-                word_counts[stringbuilder] = word_counts.get(stringbuilder, 0)
-                + 1 #Default value if that word hasn't been counted yet
+                word_counts[stringbuilder] = word_counts.get(stringbuilder, 0) + 1 #Default value if that word hasn't been counted yet
                 stringbuilder = ""
         else:
             stringbuilder += char.lower() # Case insensitivity
-    if (stringbuilder): # end of function, append rest of stringbuilder to list
-        word_counts[stringbuilder] = word_counts.get(stringbuilder, 0)
     
     return word_counts
             

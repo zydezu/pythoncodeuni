@@ -33,7 +33,7 @@ print(rec_sum([1, 2, 3, 4]))
 
 ##--EX3--#############################
 
-def sum_digits(number): #cant convert into string so here use /10 or %10 to manipulate number
+def sum_digits(number): #cant convert into string so here use //10 or %10 to manipulate number
     if (number == 0):
         return 0
     else:
@@ -56,40 +56,36 @@ print(flatten([1,[2,[3,[4]]]]))
 ##--EX5--#############################
 
 def merge(sorted_listA, sorted_listB):    
-    if (sorted_listA == []):
-        return ([sorted_listB[0]] 
-                + merge([], sorted_listB[1:])) if len(sorted_listA) > 1 else [sorted_listB[0]]
-    elif (sorted_listB == []):
-        return ([sorted_listA[0]] 
-                + merge(sorted_listA[1:], [])) if len(sorted_listB) > 1 else [sorted_listA[0]]
-            
-    if (sorted_listA[0] > sorted_listB[0]):
-        return [sorted_listB[0]] + merge(sorted_listA, sorted_listB[1:])
-    else:
+    if sorted_listA == []:
+        return sorted_listB[:]
+    elif sorted_listB == []:
+        return sorted_listA[:]
+    elif sorted_listA[0] < sorted_listB[0]:
         return [sorted_listA[0]] + merge(sorted_listA[1:], sorted_listB)
+    else:
+        return [sorted_listB[0]] + merge(sorted_listA, sorted_listB[1:])
         
 print(merge([1,5,8],[2,6,10]))
 
 ##--EX6--#############################
 
 def iselfish(word):
-    if len(word) == 0 or word == None:
-        return False
-    else:
-        if 'e' == word[0]:
-            return "e" + iselfish(word[1:])
-        elif 'l' == word[0]:
-            return "l" + iselfish(word[1:])
-        elif 'f' == word[0]:
-            return "f" + iselfish(word[1:])
-        
-        if 'e' in word and 'l' in word and 'f' in word: # eh~?
+    def elfish(word, pattern):
+        if pattern == []:
             return True
+        elif word == '':
+            # if word is empty, but pattern isn't, the word isn't elfish
+            return False
+        elif word[0] in pattern:
+            pattern.remove(word[0])
+            return elfish(word[1:], pattern)
         else:
-            return iselfish(word[1:])
+            return elfish(word[1:], pattern)
+        
+    return elfish(word, ['e', 'l', 'f'])
         
     
-print(iselfish("g"))
+print(iselfish("fle"))
 
 ##--EX7--#############################
 
