@@ -2,7 +2,7 @@ import string
 
 ##--EX1--###########################
 
-def ispalindrome(word):
+def ispalindrome(word: str) -> bool:
     """Determines if a string is a palindrome, excluding spaces and punctuation
 
     Args:
