@@ -7,24 +7,23 @@ class Vector:
             if isinstance(args[0], list):
                 self._vector = args[0]
 
-
     def __str__(self):
         if (self._vector): return '<' + str(self._vector)[1:-1] + '>'
         return '<>'
-    
+
     def dim(self):
         if (self._vector == []): return 0
         return len(self._vector)
-    
+
     def get(self, index):
         return self._vector[index]
-    
+
     def set(self, index, value):
         self._vector[index] = value
 
     def scalar_product(self, scalar):
         return Vector([x*scalar for x in self._vector])
-    
+
     def add(self, other_vector):
         if not isinstance(other_vector, Vector):
             raise TypeError("Can't add vector with " +
@@ -35,7 +34,7 @@ class Vector:
             else:
                 return Vector([sum(x) for x in 
                                zip(self._vector, other_vector._vector)])
-            
+
     def equals(self, other_vector):
         if not isinstance(other_vector, Vector):
             return False
@@ -47,30 +46,30 @@ class Vector:
             
     def __eq__(self, other_vector):
         return self.equals(other_vector)
-    
+
     def __ne__(self, other_vector):
         return not self.equals(other_vector)
-    
+
     def __add__(self, other_vector):
         return self.add(other_vector)
-    
+
     def __mul__(self, scalar):
         # vector1 * 3
         return scalar * self
-    
+
     def __rmul__(self, scalar):
         # 3 * vector1
         return self.scalar_product(scalar)
-    
+
     def __iadd__(self, other_vector):
         return self + other_vector
 
     def __imul__(self, scalar):
         return scalar * self
-    
+
     def __getitem__(self, index):
         return self._vector[index]
-    
+
     def __setitem__(self, index, value):
         self._vector[index] = value
 
