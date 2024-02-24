@@ -10,7 +10,7 @@ def longest_palindromic_numbers(number):
     Returns:
         set(): returns the set of the longest palindromic numbers
     """
-    
+
     def check_palindrome(to_check, all_numbers):
         if len(to_check) < 2:
             if all_numbers:
@@ -27,7 +27,7 @@ def longest_palindromic_numbers(number):
         else:
             check_palindrome(to_check[:-1], all_numbers)
             check_palindrome(to_check[1:], all_numbers)
-        
+
     all_numbers = set()
     number = str(int(number))
     if (number == number[::-1]):

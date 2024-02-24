@@ -19,14 +19,10 @@ class GameObject:
         return self._colour
 
     def __eq__(self, other):
-        try:
-            if (self._shape == other._shape 
-                and self._colour == other._colour):
-                return True
-            return False
-        except:
-            return False
-    
+        return (isinstance(other, GameObject) and 
+                self._shape == other._shape and 
+                self._colour == other._colour)
+
 class GameCard:
     """
     Consists of two GameObjects, as two different
@@ -39,7 +35,7 @@ class GameCard:
     def content(self):
         content_copy = copy.deepcopy(self._content)
         return content_copy
-    
+
     def __eq__(self, other):
         try:
             if (self._content[0] == other._content[0] 
@@ -54,13 +50,13 @@ class GameCard:
 class CardDeck:
     """
     The overall board game, with objects in the middle of the table
-    to 'grab' (the wooden pieces)-object_list. This class also
-    generates the possible cards allowed in a game, based of those
+    to 'grab' (the wooden pieces), contained in object_list. This class 
+    also generates the possible cards allowed in a game, based of those
     wooden pieces
     """
     def __init__(self, object_list):
         length = len(object_list)
-        if length < 3 and length > 5:
+        if not (3 <= length <= 5):
             raise ValueError(f"The list has {len(object_list)} objects")
         
         self._unique_shapes, self._unique_colours = set(), set()
